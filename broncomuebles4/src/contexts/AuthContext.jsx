@@ -23,7 +23,7 @@ export function AuthProvider({ children }) {
 
   function verificacionLog(){
     const userToken = localStorage.getItem("authToken")
-    if(userToken && userToken == "fake-token-admin@gmail.com"){
+    if(userToken && userToken == "fake-token-admin@admin.com"){
       setAdmin(true)
       return
     }if(userToken){

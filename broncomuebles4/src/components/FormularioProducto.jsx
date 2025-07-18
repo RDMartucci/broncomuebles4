@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { Mensaje } from '../assets/SweetAlert';
 import { useAuthContext } from '../contexts/AuthContext';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useProductosContext } from '../contexts/ProductosContext';
 import { Helmet } from 'react-helmet';
+import { Button } from 'react-bootstrap';
 
 function FormularioProducto({}) {
   const {agregarProducto} = useProductosContext();
   const {admin} = useAuthContext();
+  const navegar = useNavigate();
 
   const [producto, setProducto] = useState({
     name: '',
@@ -28,7 +30,7 @@ function FormularioProducto({}) {
       return("La descripción debe tener al menos 10 caracteres.")
     }
     if(!producto.imagen.trim()){
-      return("La url de la imgaen no debe estar vacía")
+      return("La url de la imagen no debe estar vacía")
     }
     else{
       return true
@@ -44,9 +46,12 @@ function FormularioProducto({}) {
     e.preventDefault();
     const validarForm = validarFormulario()
     if (validarForm == true) {
-      agregarProducto(producto).then((data) => {
+      agregarProducto(producto)
+      .then((data) => {
+        Mensaje('Producto agregado con exito!','','success','cerrar')
         setProducto({ name: '', price: '', description: '', imagen: ""});
-      }).catch((error) => {
+      })
+      .catch((error) => {
         Mensaje("Hubo un problema al agregar el producto", error, "error", "Cerrar")
       })
     } else{
@@ -60,14 +65,18 @@ function FormularioProducto({}) {
     )
   }
 
+  const handleCancelar = () => { 
+    navegar('/dashboardAdmin');
+  }
+
   return ( 
     <div className='d-flex flex-column  justify-content-center  align-items-center'>
                 <Helmet>
                 <title>Agregar/BroncoMuebles</title>
                 <meta name="description" content="Explora nuestra variedad de productos." />
             </Helmet>
+        <h3 className='titulo m-5'>agregar producto nuevo</h3>
       <form onSubmit={handleSubmit2} className="p-4 border rounded shadow w-100">
-        <h3>Editar Producto</h3>
         <div>
           <label className="form-label">Nombre:</label>
           <input
@@ -106,8 +115,9 @@ function FormularioProducto({}) {
             className="form-control"
           />
         </div>
-        <button type="submit">Actualizar Producto</button>
+        <button type="submit">Confirmar Agregar Producto</button>
       </form>
+      <Button variant="danger" onClick={handleCancelar} >Cancelar</Button>
     </div>
   );
 }

@@ -10,14 +10,16 @@ export default function Login3() {
   const [password, setPassword] = useState('');
   const [show, setShow] = useState(true)
   const { login, user, logout, admin } = useAuthContext();
-  // const navigate = useNavigate();
+  const navegar = useNavigate();
 
 
   function registrarUsuario(e) {
     e.preventDefault();
     crearUsuario(usuario, password).then((user) => {
       login(usuario)
-      Mensaje("Logeo exitoso", "", "success", "Confirmar")
+      Mensaje("Registro exitoso", "", "success", "Confirmar");
+      limpiaFormu();
+      if (admin) navegar('/dashboardAdmin');
     }).catch((error) => {
       if (error.code == "auth/invalid-credential") {
         Mensaje("Credenciales incorrectas", "", "error", "Cerrar")
@@ -28,20 +30,28 @@ export default function Login3() {
   }
 
   const handleSubmit2 = (e) => {
-    logout()
+    logout();
   }
 
   function iniciarSesionEmailPass(e) {
     e.preventDefault();
-    loginEmailPass(usuario, password).then((user) => {
-      login(usuario);
-      Mensaje("Logeo exitoso", "", "success", "Confirmar");
-    }).catch((error) => {
-      if (error.code == "auth/invalid-credential") {
-        Mensaje("Credenciales incorrectas", "", "error", "Cerrar");
+    loginEmailPass(usuario, password)
+      .then((user) => {
+        login(usuario);
+        Mensaje("Logeo exitoso", "", "success", "Confirmar");
         limpiaFormu();
-      }
-    })
+        if (admin) {
+          navegar('/dashboardAdmin');
+        } else {
+          navegar('/productos')
+        }
+      })
+      .catch((error) => {
+        if (error.code == "auth/invalid-credential") {
+          Mensaje("Credenciales incorrectas", "", "error", "Cerrar");
+          limpiaFormu();
+        }
+      })
   }
 
   const limpiaFormu = () => {
@@ -54,14 +64,23 @@ export default function Login3() {
     setShow(!show)
   }
 
-  if (user || admin) {
-    return (
-      <form onSubmit={handleSubmit2}>
-        <button type="submit" className="btn btn-danger">Cerrar sesión</button>
+  // if (user || admin) {
+  //   return (
 
-      </form>
-    )
-  } if (!user && show) {
+  //     <form onSubmit={handleSubmit2}>
+  //       <button type="submit" className="btn btn-danger">Cerrar sesión</button>
+
+  //     </form>
+  //   )
+  // } 
+  if (admin) {
+    navegar('/dashboardAdmin');
+  } 
+  if (user) {
+    navegar('/productos')
+  }
+
+  if (!user && show) {
     return (
       <div className='d-flex flex-column align-items-center min-vh-100'>
         <Helmet>

@@ -54,6 +54,11 @@ export default function ProductoDetalle() {
     if (cantidad > 1) setCantidad(cantidad - 1);
   }
 
+    const handleCancelar = () => { 
+      admin ? navegar('/dashboardAdmin') : navegar('/productos');
+  }
+
+
   if (cargando) {
     return (
       <div className="d-flex flex-column justify-content-center align-items-center" style={{ height: '50vh' }}>
@@ -90,16 +95,17 @@ export default function ProductoDetalle() {
             <p>{productoEncontrado.description}</p>
             <p className="fw-bold fs-5">{productoEncontrado.price} $</p>
 
-            <div className="d-flex align-items-center gap-3 my-3">
+
+            {!admin && <div className="d-flex align-items-center gap-3 my-3">
               <Button variant="outline-secondary" onClick={restarContador}>-</Button>
               <span className="fs-5">{cantidad}</span>
               <Button variant="outline-secondary" onClick={sumarContador}>+</Button>
-            </div>
+            </div>}
 
             <div className="d-flex flex-wrap gap-2 mt-3">
               {admin ? (
                 <>
-                  <Link to={`/admin/editarProducto/${id}`}>
+                  <Link to={`/dashboardAdmin/editarProducto/${id}`}>
                     <Button variant="warning">Editar Producto</Button>
                   </Link>
                   <Button variant="danger" onClick={dispararEliminar}>
@@ -109,6 +115,7 @@ export default function ProductoDetalle() {
               ) : (
                 <Button onClick={funcionCarrito}>Agregar al carrito</Button>
               )}
+              <Button variant="danger" onClick={handleCancelar} >Cancelar</Button>
             </div>
           </div>
         </Col>

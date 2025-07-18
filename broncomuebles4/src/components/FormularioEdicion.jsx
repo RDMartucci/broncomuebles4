@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { Link, Navigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useProductosContext } from "../contexts/ProductosContext";
 import { useAuthContext } from "../contexts/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
 import { Mensaje } from "../assets/SweetAlert";
 import { Helmet } from "react-helmet";
+import { Button } from "react-bootstrap";
 
 function FormularioEdicion({ }) {
   const { admin } = useAuthContext();
@@ -13,11 +14,10 @@ function FormularioEdicion({ }) {
   const [producto, setProducto] = useState(productoEncontrado);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(null);
+  const navegar = useNavigate();
 
   if (!admin) {
-    return (
-      <Navigate to="/login" replace />
-    )
+      navegar('/login')
   }
 
   useEffect(() => {
@@ -74,6 +74,13 @@ function FormularioEdicion({ }) {
 
   };
 
+  const handleCancelar = () => { 
+    return (
+    // <Navigate to="/dashboardAdmin" replace />
+    navegar("/dashboardAdmin")
+    )
+  }
+
   return (
     <div className='d-flex flex-column  justify-content-center  align-items-center min-vh-100'>
       <Helmet>
@@ -127,6 +134,7 @@ function FormularioEdicion({ }) {
         <button type="submit">Actualizar Producto</button>
         <ToastContainer />
       </form>
+       <Button variant="danger" onClick={handleCancelar} >Cancelar</Button>
     </div>
   );
 }

@@ -8,8 +8,14 @@ import logo from '../assets/broncomuebles-logo-chico01.png';
 
 export default function BarraNav() {
   const { productosCarrito } = useContext(CarritoContext);
-  const { admin } = useAuthContext();
+  const { user , admin , logout} = useAuthContext();
   const [expanded, setExpanded] = useState(false);
+
+
+    const handleCerrarSesion = () => { 
+      logout();
+      navegar('/');
+  }
 
   return (
 
@@ -25,8 +31,8 @@ export default function BarraNav() {
             <Nav.Link as={Link} to="/productos" onClick={() => setExpanded(false)}>Productos</Nav.Link>
             <Nav.Link as={Link} to="/nosotros" onClick={() => setExpanded(false)}>Nosotros</Nav.Link>
             <Nav.Link as={Link} to="/contacto" onClick={() => setExpanded(false)}>Contacto</Nav.Link>
-            {admin && <Nav.Link as={Link} to="/admin" onClick={() => setExpanded(false)}>Admin</Nav.Link>}
-            {admin && <Nav.Link as={Link} to="/admin/agregarProductos" onClick={() => setExpanded(false)}>Agregar productos</Nav.Link>}
+            {admin && <Nav.Link as={Link} to="/dashboardAdmin/" onClick={() => setExpanded(false)}>Dashboard</Nav.Link>}
+            {/* {admin && <Nav.Link as={Link} to="/dashboardAdmin/agregarProductos" onClick={() => setExpanded(false)}>Agregar productos</Nav.Link>} */}
           </Nav>
           <Nav>
             <Nav.Link as={Link} to="/carrito" onClick={() => setExpanded(false)}>
@@ -35,7 +41,8 @@ export default function BarraNav() {
                 <Badge bg="light" text="dark">{productosCarrito.length}</Badge>
               )}
             </Nav.Link>
-            <Nav.Link as={Link} to="/login" onClick={() => setExpanded(false)}>Login</Nav.Link>
+            {(user || admin) ? <form onSubmit={handleCerrarSesion}><button type="submit" className="btn btn-danger">Cerrar sesión</button></form>
+                            : <Nav.Link as={Link} to="/login" onClick={() => setExpanded(false)}>Login</Nav.Link>}
           </Nav>
         </Navbar.Collapse>
       </Container>

@@ -7,7 +7,8 @@ import Footer from './components/Footer';
 import About from './layouts/About';
 import Contacto from './layouts/Contacto';
 import ProductosContainer from './components/ProductosContainer';
-import Admin from './components/Admin';
+// import Admin from './components/DashboardAdmin';
+import DashboardAdmin from './components/DashboardAdmin';
 import FormularioProducto from './components/FormularioProducto';
 import FormularioEdicion from './components/FormularioEdicion';
 import Carrito from './components/Carrito';
@@ -33,9 +34,9 @@ export default function App() {
           <Route path="/nosotros" element={<About />} />
           <Route path="/contacto" element={<Contacto/>} />
           <Route path="/productos/:id" element={<ProductoDetalleBoostrap/>}/>
-          <Route path='/admin' element={<Admin/>}/>
-          <Route path="/admin/agregarProductos" element={<FormularioProducto/>}/>
-          <Route path="/admin/editarProducto/:id" element={<FormularioEdicion/>}/>
+          <Route path='/dashboardAdmin' element={<DashboardAdmin/>}/>
+          <Route path="/dashboardAdmin/agregarProductos" element={<FormularioProducto/>}/>
+          <Route path="/dashboardAdmin/editarProducto/:id" element={<FormularioEdicion/>}/>
         </Routes>
         <Footer/>
     </Router>
