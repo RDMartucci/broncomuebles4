@@ -1,21 +1,21 @@
-import { useEffect, useState } from 'react'
-import './App.css'
-import Home from './layouts/Home'
+import { useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './layouts/Home'
 import ProductosContainer from './components/ProductosContainer';
-import Carrito from './components/Carrito';
+// import Carrito from './components/Carrito';
 import About from './components/About';
 import Contacto from './components/Contacto';
-import ProductoDetalle from './components/ProductoDetalle';
+// import ProductoDetalle from './components/ProductoDetalle';
 import Admin from './components/Admin';
 import FormularioProducto from './components/FormularioProducto';
 import FormularioEdicion from './components/FormularioEdicion';
 import { useAuthContext } from './contexts/AuthContext';
-import LoginBoost from './components/LoginBoost';
+// import LoginBoost from './components/LoginBoost';
 import NavBoostrap from './components/NavBoostrap';
 import CarritoBootstrap from './components/CarritoBootstrap';
 import LoginBoost2 from './components/LoginBoost2';
 import ProductoDetalleBoostrap from './components/ProductoDetalleBoostrap';
+import './App.css'
 
 function App() {
   const {verificacionLog} = useAuthContext();
@@ -30,7 +30,6 @@ function App() {
         <NavBoostrap/>
         <Routes>
           <Route path="/" element={<Home />}/>
-          {/*<Route path='/login' element={<Login user={usuarioLogeado} admin={adminLogeado} setLogeadoAdmin={manejarAdmin} setLogeadoUser={manejarUser}/>}/>*/}
           <Route path="/login" element={<LoginBoost2/>} />
           <Route path="/productos" element={<ProductosContainer/>}/>
           <Route path="/carrito" element={<CarritoBootstrap /> }/>      

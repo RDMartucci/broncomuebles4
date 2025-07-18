@@ -1,16 +1,15 @@
-import CarruselBootstrap from "../components/CarruselBootstrap"
+import Carrusel2 from "../components/Carrusel2"
+import CarruselAside from "../components/CarruselAside"
 import Footer from "../components/Footer"
-import MainBootstrap from "../components/MainBootstrap"
+import Hero from "../components/Hero"
 
-function Home() {
+export default function Home() {
 
     return(
         <div>
-            <CarruselBootstrap/>
-            <MainBootstrap/>
+            <Carrusel2/>
+            <Hero/>
             <Footer/>
         </div>
     )
-}
-
-export default Home
+};

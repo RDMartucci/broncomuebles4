@@ -4,5 +4,44 @@
   margin: 0 auto;
   /*padding: 2rem;*/
   text-align: center;
+  background-color: var(--fondo);
 
+}
+
+.mensaje-de-carga {
+    text-transform: uppercase;
+    font-size: 20px;
+    background-color: var(--fondo);
+    color: var(--turquoise);
+    margin: 1rem auto;
+    padding: 0.5rem 1rem;
+    text-align: center;
+}
+.titulo {
+    /* text-shadow: 1px 1px 5px var(--green); */
+    text-shadow: 1px 1px 5px var(--turquoise);
+  text-transform: uppercase;
+  }
+
+
+.texto-principal {
+    text-align: start;
+    width: 80%;
+    margin: 0 auto;
+    list-style: none;
+    padding: 0;
+}
+/* 
+ul li{
+    margin-bottom: 1em;
+} */
+.texto-color-sombra {
+    text-transform: capitalize;
+    color: var(--blanco);
+    text-shadow: 1px 1px 5px var(--black);
+}
+
+.carrusel, 
+.hero{
+  background-color: var(--fondo);
 }

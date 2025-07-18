@@ -1,8 +1,8 @@
 import { useProductosContext } from "../contexts/ProductosContext";
 import { useEffect, useState } from "react";
-import { Carousel, Container } from "react-bootstrap";
+import { Carousel, Container, Spinner } from "react-bootstrap";
 
-function CarruselBootstrap() {
+function Carrusel2() {
     const { productos, obtenerProductos } = useProductosContext();
     const [cargando, setCargando] = useState(true);
 
@@ -14,16 +14,24 @@ function CarruselBootstrap() {
         }
     }, []);
 
-    const primerosTres = productos.slice(0, 3);
-    console.log(primerosTres)
+    const prodCarrusel = productos.slice(0, 3);
 
-    if (cargando) return <p>Cargando carrusel...</p>;
-    if (primerosTres.length === 0) return <p>No hay productos para mostrar.</p>;
+    // if (cargando) return <p>Cargando carrusel...</p>;
+        if (cargando) {
+        return (
+            <div className="d-flex flex-column justify-content-center align-items-center" style={{ height: '50vh' }}>
+                <Spinner animation="border" variant="primary" role="status" />
+                <p className="mensaje-de-carga mt-3">Cargando productos...</p>
+            </div>
+        );
+    }
+    if (prodCarrusel.length === 0) return <p className="mensaje-de-carga mt-3">No hay productos para mostrar.</p>;
 
     return (
         <Container className="my-4">
-            <Carousel>
-                {primerosTres.map((producto) => (
+        <h2 className="titulo hero">nuestras ofertas</h2>
+            <Carousel className="carrusel">
+                {prodCarrusel.map((producto) => (
                 <Carousel.Item key={producto.id}>
                     <img
                     className="d-block w-100"
@@ -42,4 +50,4 @@ function CarruselBootstrap() {
     );
 }
 
-export default CarruselBootstrap;
+export default Carrusel2;
