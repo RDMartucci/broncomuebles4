@@ -1,6 +1,6 @@
 import Swal from 'sweetalert2'
 
-export function dispararSweetBasico(titulo, text, icon, textoBoton) {
+export function Mensaje(titulo, text, icon, textoBoton) {
     Swal.fire({
         title: titulo,
         text: text,

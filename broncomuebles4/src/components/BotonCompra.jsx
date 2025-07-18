@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
 const BotonCompra = styled.button`
-  background-color: #ff5733;
-  color: white;
+  background-color: var(--green);
+  color: var(--blanco);
   padding: 10px 15px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   &:hover {
-    background-color: #c70039;
+    background-color: var(--orange);
   }
 `;
 

@@ -1,4 +1,4 @@
-.productos-conteiner{
+.productos-conteiner {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -8,7 +8,7 @@
     width: 100%;
 }
 
-.producto-card{
+.producto-card {
     background-color: bisque;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -18,8 +18,35 @@
     margin-top: 5px;
 }
 
-.producto-image{
+.producto-image {
     width: 140px;
     height: 140px;
     border-radius: 50%;
+}
+
+.pagination-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0.5rem 1rem;
+}
+
+.pagination-scroll {
+    display: inline-flex;
+    gap: 0.5rem;
+    min-width: max-content;
+}
+.producto-card {
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.producto-card .card-body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+.card {
+  min-height: 400px;
 }

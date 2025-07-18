@@ -1,27 +1,41 @@
-import "../styles/Carrito.css"
+import { Card, Row, Col, Button } from "react-bootstrap";
 
-function CarritoCard({producto, funcionDisparadora}){
-    
+export default function CarritoCard({ producto, funcionDisparadora }) {
     function borrarDelCarrito() {
-        console.log("Paso 1")
-        funcionDisparadora(producto.id)
+        funcionDisparadora(producto.id);
     }
 
-    return(
-        <div className="carrito-card" >
-            <h3 className="carrito-producto" style={{color:"black"}}>{producto.name}</h3>
-            {<p className="descripcion-carrito" style={{color:"black"}}>{producto.description}</p>}
-            <img className="carrito-image" src={producto.imagen}></img>
-            <span style={{color:"black"}}>{producto.cantidad}</span>
-            <div className="carrito-unitario">
-                <span style={{color:"black"}}>{producto.price} $</span>
-            </div>
-            <div className="carrito-sub">
-                <span style={{color:"black"}}>{producto.cantidad * producto.price} $</span>
-            </div>
-            <button className="boton-carrito" onClick={borrarDelCarrito} style={{backgroundColor: "red" ,color:"black"}}>X</button>
-        </div>
-    )
+    return (
+        <Card className="mb-3">
+        <Card.Body>
+            <Row className="align-items-center">
+            <Col md={3}>
+                <Card.Img
+                variant="top"
+                src={producto.imagen}
+                style={{ maxHeight: "100px", objectFit: "cover", width: "100%" }}
+                />
+            </Col>
+            <Col md={2}>
+                <Card.Title>{producto.name}</Card.Title>
+                <Card.Text className="text-muted">{producto.description}</Card.Text>
+            </Col>
+            <Col md={1}>
+                <Card.Text>Cant: {producto.cantidad}</Card.Text>
+            </Col>
+            <Col md={2}>
+                <Card.Text>Precio: {producto.price} $</Card.Text>
+            </Col>
+            <Col md={2}>
+                <Card.Text>Subtotal: {producto.cantidad * producto.price} $</Card.Text>
+            </Col>
+            <Col md={2}>
+                <Button variant="danger" onClick={borrarDelCarrito}>
+                X
+                </Button>
+            </Col>
+            </Row>
+        </Card.Body>
+        </Card>
+    );
 }
-
-export default CarritoCard

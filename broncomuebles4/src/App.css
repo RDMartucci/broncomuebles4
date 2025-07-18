@@ -7,6 +7,9 @@
   background-color: var(--fondo);
 
 }
+main{
+  margin-top: 3rem;
+}
 
 .mensaje-de-carga {
     text-transform: uppercase;
@@ -19,8 +22,12 @@
 }
 .titulo {
     /* text-shadow: 1px 1px 5px var(--green); */
-    text-shadow: 1px 1px 5px var(--turquoise);
+  text-shadow: 1px 1px 5px var(--turquoise);
   text-transform: uppercase;
+  }
+
+  .titulo-cap{
+    text-transform: capitalize;
   }
 
 

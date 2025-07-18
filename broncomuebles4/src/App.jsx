@@ -1,23 +1,21 @@
 import { useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useAuthContext } from './contexts/AuthContext';
+import BarraNav from './components/BarraNav';
 import Home from './layouts/Home'
+import Footer from './components/Footer';
+import About from './layouts/About';
+import Contacto from './layouts/Contacto';
 import ProductosContainer from './components/ProductosContainer';
-// import Carrito from './components/Carrito';
-import About from './components/About';
-import Contacto from './components/Contacto';
-// import ProductoDetalle from './components/ProductoDetalle';
 import Admin from './components/Admin';
 import FormularioProducto from './components/FormularioProducto';
 import FormularioEdicion from './components/FormularioEdicion';
-import { useAuthContext } from './contexts/AuthContext';
-// import LoginBoost from './components/LoginBoost';
-import NavBoostrap from './components/NavBoostrap';
-import CarritoBootstrap from './components/CarritoBootstrap';
-import LoginBoost2 from './components/LoginBoost2';
-import ProductoDetalleBoostrap from './components/ProductoDetalleBoostrap';
+import Carrito from './components/Carrito';
+import Login3 from './components/Login3';
+import ProductoDetalleBoostrap from './components/ProductoDetalle';
 import './App.css'
 
-function App() {
+export default function App() {
   const {verificacionLog} = useAuthContext();
 
   useEffect(() => {
@@ -26,13 +24,12 @@ function App() {
   
   return (
     <Router>
-      <div>
-        <NavBoostrap/>
+        <BarraNav/>
         <Routes>
           <Route path="/" element={<Home />}/>
-          <Route path="/login" element={<LoginBoost2/>} />
+          <Route path="/login" element={<Login3/>} />
           <Route path="/productos" element={<ProductosContainer/>}/>
-          <Route path="/carrito" element={<CarritoBootstrap /> }/>      
+          <Route path="/carrito" element={<Carrito /> }/>      
           <Route path="/nosotros" element={<About />} />
           <Route path="/contacto" element={<Contacto/>} />
           <Route path="/productos/:id" element={<ProductoDetalleBoostrap/>}/>
@@ -40,9 +37,7 @@ function App() {
           <Route path="/admin/agregarProductos" element={<FormularioProducto/>}/>
           <Route path="/admin/editarProducto/:id" element={<FormularioEdicion/>}/>
         </Routes>
-      </div>
+        <Footer/>
     </Router>
   )
 }
-
-export default App;

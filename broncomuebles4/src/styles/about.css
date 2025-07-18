@@ -1,0 +1,16 @@
+.about{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.titulo{
+    text-transform: capitalize;
+}
+.leyenda{
+    text-align: justify;
+    width: 80%;
+    margin: auto;
+    color: var(--turquoise);
+}

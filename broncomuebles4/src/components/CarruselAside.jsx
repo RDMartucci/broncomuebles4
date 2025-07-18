@@ -14,7 +14,7 @@ export default function CarruselAside() {
         }
     }, []);
 
-    const prodCarrusel = productos.slice(3, 6);
+    const prodCarrusel = productos.slice(3, 6); //tomas de la pos.3, 3 posiciones.
 
     if (cargando) {
         return (
@@ -28,12 +28,13 @@ export default function CarruselAside() {
 
     return (
         <Container className="my-4 w-100">
-            <Carousel className="carrusel">
+            <Carousel controls={false} indicators={false}>
                 {prodCarrusel.map((producto) => (
+
                     <Carousel.Item key={producto.id}>
                         <img
                             className="d-block w-100"
-                            src={producto.imagen}
+                            src={producto.imagen} // Cambia esto por la ruta de tu imagen
                             alt={producto.name}
                             style={{ height: "300px", objectFit: "cover" }}
                         />

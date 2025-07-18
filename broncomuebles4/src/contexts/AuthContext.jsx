@@ -8,7 +8,7 @@ export function AuthProvider({ children }) {
   const login = (username) => {
     // Simulando la creación de un token (en una app real, esto sería generado por un servidor)
     const token = `fake-token-${username}`;
-    if(username == "admin@gmail.com"){ //contraseña : test12
+    if(username == "admin@admin.com"){ //contraseña : 123456
       setAdmin(true)
     }
     localStorage.setItem('authToken', token);

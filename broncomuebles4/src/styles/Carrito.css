@@ -57,3 +57,33 @@
     height: 100px;
     border-radius: 50%;
 }
+
+.carrito-acciones{
+    margin: 10px auto;
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+.btn-accion-carrito{
+    margin: 2px 5px;
+    padding: 0 .3rem;
+}
+.btn-vaciar-carrito{
+    border: 1px solid var(--orange);
+    background-color: var(--orange) !important;
+}
+.btn-continuar{
+    border: 1px solid var(--green);
+    background-color: var(--indigo) !important;
+}
+.btn-comprar{
+    border: 1px solid var(--green) !important;
+    background-color: var(--turquoise) !important;
+}
+.btn-vaciar-carrito:hover,
+.btn-continuar:hover,
+.btn-comprar:hover {
+    border-color: var(--blanco2);
+    box-shadow:  0 1px 5px var(--black);
+}

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { dispararSweetBasico } from '../assets/SweetAlert';
+import { Mensaje } from '../assets/SweetAlert';
 import { useAuthContext } from '../contexts/AuthContext';
 import { Navigate } from 'react-router-dom';
 import { useProductosContext } from '../contexts/ProductosContext';
+import { Helmet } from 'react-helmet';
 
 function FormularioProducto({}) {
   const {agregarProducto} = useProductosContext();
@@ -46,10 +47,10 @@ function FormularioProducto({}) {
       agregarProducto(producto).then((data) => {
         setProducto({ name: '', price: '', description: '', imagen: ""});
       }).catch((error) => {
-        dispararSweetBasico("Hubo un problema al agregar el producto", error, "error", "Cerrar")
+        Mensaje("Hubo un problema al agregar el producto", error, "error", "Cerrar")
       })
     } else{
-      dispararSweetBasico("Error en la carga de producto", validarForm, "error", "Cerrar")
+      Mensaje("Error en la carga de producto", validarForm, "error", "Cerrar")
     }
   }
 
@@ -61,6 +62,10 @@ function FormularioProducto({}) {
 
   return ( 
     <div className='d-flex flex-column  justify-content-center  align-items-center'>
+                <Helmet>
+                <title>Agregar/BroncoMuebles</title>
+                <meta name="description" content="Explora nuestra variedad de productos." />
+            </Helmet>
       <form onSubmit={handleSubmit2} className="p-4 border rounded shadow w-100">
         <h3>Editar Producto</h3>
         <div>
