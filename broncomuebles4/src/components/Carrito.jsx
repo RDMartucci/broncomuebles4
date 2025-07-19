@@ -6,7 +6,7 @@ import { Button, Container } from "react-bootstrap";
 import { Mensaje } from '../assets/SweetAlert.js';
 import CarritoCard from "./CarritoCard.jsx";
 import Row from 'react-bootstrap/Row';
-import '../styles/carrito.css';
+import '../styles/Carrito.css';
 
 export default function Carrito() {
     const { user } = useContext(AuthContext);
