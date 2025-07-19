@@ -82,7 +82,7 @@ export default function Login3() {
 
   if (!user && show) {
     return (
-      <div className='d-flex flex-column align-items-center min-vh-100'>
+      <div className='d-flex flex-column align-items-center min-vh-100 min-vw-100'>
         <Helmet>
           <title>Login/BroncoMuebles</title>
           <meta name="description" content="Explora nuestra variedad de productos." />
@@ -107,28 +107,49 @@ export default function Login3() {
     )
   } if (!user && !show) {
     return (
-      <div>
-        <form onSubmit={registrarUsuario}>
-          <h2 className='titulo'>Registrarse</h2>
+      <div className='d-flex flex-column align-items-center min-vh-100'>
+        <h2 className='titulo'>Registrarse</h2>
+        {/* <form onSubmit={registrarUsuario} className="p-4 border rounded shadow ">
           <div>
-            <label>Email:</label>
-            <input
+            <label className="form-label">Email</label>
+            {/* <input
               type="text"
               value={usuario}
               onChange={(e) => setUsuario(e.target.value)}
-            />
+            /> 
+            <input value={usuario}
+              onChange={(e) => setUsuario(e.target.value)} type="email" className="form-control" required />
           </div>
-          <div>
+           <div>
             <label>Contraseña:</label>
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+          </div> 
+          <div className="mb-3">
+            <label className="form-label">Contraseña</label>
+            <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" className="form-control" required />
           </div>
           <button type="submit">Registrase</button>
+        </form> */}
+        <form onSubmit={registrarUsuario} className="p-4 border rounded shadow ">
+          {/* <h3 className='titulo-cap'>se requieren tu email y pass</h3> */}
+          <div className="mb-3">
+            <label className="form-label">Email</label>
+            <input value={usuario}
+              onChange={(e) => setUsuario(e.target.value)} type="email" className="form-control" required />
+          </div>
+          <div className="mb-3">
+            <label className="form-label">Contraseña</label>
+            <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" className="form-control" required />
+          </div>
+          <button type="submit" className="btn btn-primary w-50">Registrarse</button>
+          <button style={{ marginTop: "2px" }} className="btn btn-secondary w-50" onClick={handleShow}>iniciar sesion</button>
         </form>
-        <button style={{ marginTop: "2px" }} onClick={handleShow}>Iniciar Sesión</button>
+
+        {/* <button style={{ marginTop: "2px" }} onClick={handleShow}>Iniciar Sesión</button> */}
       </div>
     )
   }
