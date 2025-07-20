@@ -15,7 +15,8 @@ export default function ProdCard({ producto }) {
         style={{ maxHeight: "200px", objectFit: "cover" }}
       />
       <Card.Body className="d-flex flex-column justify-content-between">
-        <Card.Title>{producto.name}</Card.Title>
+        <Card.Title className="prod-nombre">{producto.name}</Card.Title>
+        <Card.Title>$ {producto.price}</Card.Title>
         <Link to={"/productos/" + producto.id} className="mt-auto">
           <Button variant="primary">Ver detalles del producto</Button>
         </Link>

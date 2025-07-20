@@ -30,7 +30,6 @@ main{
     text-transform: capitalize;
   }
 
-
 .texto-principal {
     text-align: start;
     width: 80%;
@@ -38,10 +37,7 @@ main{
     list-style: none;
     padding: 0;
 }
-/* 
-ul li{
-    margin-bottom: 1em;
-} */
+
 .texto-color-sombra {
     text-transform: capitalize;
     color: var(--blanco);
@@ -51,4 +47,8 @@ ul li{
 .carrusel, 
 .hero{
   background-color: var(--fondo);
+}
+
+.prod-nombre{
+  color: var(--black2);
 }
